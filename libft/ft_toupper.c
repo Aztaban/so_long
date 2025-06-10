@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 23:58:01 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/11 00:29:23 by mjusta           ###   ########.fr       */
+/*   Created: 2025/05/24 15:41:50 by mjusta            #+#    #+#             */
+/*   Updated: 2025/05/25 17:19:56 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+static int	ft_islower(int c)
 {
-	(void)argc;
-	(void)argv;
-	return (0);
+	return (c >= 97 && c <= 122);
+}
+
+int	ft_toupper(int c)
+{
+	if (ft_islower(c))
+		c -= 32;
+	return (c);
 }

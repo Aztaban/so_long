@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 23:58:01 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/11 00:29:23 by mjusta           ###   ########.fr       */
+/*   Created: 2025/05/25 19:52:40 by mjusta            #+#    #+#             */
+/*   Updated: 2025/05/28 14:31:50 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strnstr(const char *big, const char *small, size_t len)
 {
-	(void)argc;
-	(void)argv;
-	return (0);
+	size_t	i;
+	size_t	j;
+
+	if (!big && len == 0)
+		return (NULL);
+	if (small[0] == '\0')
+		return ((char *)big);
+	i = 0;
+	while (big[i] && i < len)
+	{
+		j = 0;
+		while (small[j] && (i + j < len) && big[i + j] == small[j])
+			j++;
+		if (!small[j])
+			return ((char *)(big + i));
+		i++;
+	}
+	return (NULL);
 }

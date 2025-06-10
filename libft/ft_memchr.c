@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 23:58:01 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/11 00:29:23 by mjusta           ###   ########.fr       */
+/*   Created: 2025/05/26 11:46:18 by mjusta            #+#    #+#             */
+/*   Updated: 2025/05/26 12:38:51 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	(void)argc;
-	(void)argv;
-	return (0);
+	const unsigned char	*str;
+
+	str = (const unsigned char *)s;
+	while (n--)
+	{
+		if (*str == (unsigned char)c)
+			return ((void *)str);
+		str++;
+	}
+	return (NULL);
 }

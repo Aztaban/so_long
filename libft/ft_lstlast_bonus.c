@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_last_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 23:58:01 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/11 00:29:23 by mjusta           ###   ########.fr       */
+/*   Created: 2025/05/29 11:21:26 by mjusta            #+#    #+#             */
+/*   Updated: 2025/05/29 12:24:32 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+t_list	*ft_lstlast(t_list *lst)
 {
-	(void)argc;
-	(void)argv;
-	return (0);
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

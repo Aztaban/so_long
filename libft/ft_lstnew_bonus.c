@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 23:58:01 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/11 00:29:23 by mjusta           ###   ########.fr       */
+/*   Created: 2025/05/28 15:59:42 by mjusta            #+#    #+#             */
+/*   Updated: 2025/05/28 17:57:44 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+t_list	*ft_lstnew(void *content)
 {
-	(void)argc;
-	(void)argv;
-	return (0);
+	t_list	*node;
+
+	node = (t_list *)malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }
+
+/*
+#include <stdio.h>
+int	main(void)
+{
+	t_list *new = ft_lstnew("42Prague");
+	printf("Content: %s\n", (char *)new->content);
+	printf("Next: %p\n", new->next);
+	free(new);
+}*/

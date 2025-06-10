@@ -1,20 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 23:58:01 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/11 00:29:23 by mjusta           ###   ########.fr       */
+/*   Created: 2025/05/23 12:06:15 by mjusta            #+#    #+#             */
+/*   Updated: 2025/05/25 17:19:25 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	(void)argc;
-	(void)argv;
-	return (0);
+	unsigned char		*d;
+	const unsigned char	*s;
+	size_t				i;
+
+	i = 0;
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	if (d == s || n == 0)
+		return (dest);
+	if (d < s)
+	{
+		while (i < n)
+		{
+			d[i] = s[i];
+			i++;
+		}
+	}
+	else
+	{
+		while (n--)
+			d[n] = s[n];
+	}
+	return (dest);
 }
