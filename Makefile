@@ -6,7 +6,7 @@
 #    By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/09 23:57:47 by mjusta            #+#    #+#              #
-#    Updated: 2025/06/11 00:56:36 by mjusta           ###   ########.fr        #
+#    Updated: 2025/06/14 18:32:25 by mjusta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRC = main.c
+SRC = main.c controls.c
 OBJ = $(SRC:.c=.o)
 
 LIBFT_DIR = libft
@@ -52,5 +52,8 @@ fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
+
+valgrind:
+	@valgrind --leak-check=full --track-origins=yes ./$(NAME)
 
 .PHONY: all clean fclean re
