@@ -6,7 +6,7 @@
 #    By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/09 23:57:47 by mjusta            #+#    #+#              #
-#    Updated: 2025/06/14 18:32:25 by mjusta           ###   ########.fr        #
+#    Updated: 2025/06/16 01:24:49 by mjusta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRC = main.c controls.c
+SRC = main.c controls.c draw.c game.c map.c
 OBJ = $(SRC:.c=.o)
 
 LIBFT_DIR = libft
@@ -54,6 +54,6 @@ fclean: clean
 re: fclean all
 
 valgrind:
-	@valgrind --leak-check=full --track-origins=yes ./$(NAME)
+	@valgrind --leak-check=full --track-origins=yes ./$(NAME) maps/level_01.ber
 
 .PHONY: all clean fclean re
