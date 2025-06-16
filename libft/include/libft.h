@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 11:05:46 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/13 02:29:02 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/16 01:34:58 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 # include "libft_output.h"
 # include "libft_string.h"
 # include "ft_printf.h"
+# include "get_next_line.h"
 
 #endif
