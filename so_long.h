@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/19 00:49:41 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/19 01:16:03 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	exit_with_error(t_game *game, char *message);
 
 // map.c
 char	**read_map(const char *filename);
-void	validate_map(char **map);
+void	validate_map(t_map *map);
 void	free_map(char **map);
 
 // draw.c
