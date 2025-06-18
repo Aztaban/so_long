@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/16 01:20:12 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/19 00:49:41 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,9 @@ int		handle_keypress(int keycode, t_game *game);
 void	init_game(t_game *game, const char *filename);
 void	exit_game(t_game *game);
 int		close_game(t_game *game);
+
+// helpers.c
+void	exit_with_error(t_game *game, char *message);
 
 // map.c
 char	**read_map(const char *filename);
