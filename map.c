@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:43 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/16 01:56:32 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/19 00:56:22 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,14 @@ static char	**convert_list_to_map(t_list *lines)
 	i = 0;
 	while (lines)
 	{
-		map[i] = lines->content;
+		map[i] = ft_strdup(lines->content);
+		if (!map[i])
+		{
+			while (i-- > 0)
+				free(map[i]);
+			free(map);
+			return (NULL);
+		}
 		lines = lines->next;
 		i++;
 	}
@@ -33,27 +40,58 @@ static char	**convert_list_to_map(t_list *lines)
 	return (map);
 }
 
-char	**read_map(const char *filename)
+static t_list	*read_lines(int fd)
 {
-	int		fd;
 	t_list	*lines;
+	t_list	*node;
 	char	*line;
-	char	**map;
 
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		return (NULL); //TODO error message
 	lines = NULL;
 	line = get_next_line(fd);
 	while (line)
 	{
-		ft_lstadd_back(&lines, ft_lstnew(line));
+		node = ft_lstnew(line);
+		if (!node)
+		{
+			free(line);
+			ft_lstclear(&lines, free);
+			return (NULL);
+		}
+		ft_lstadd_back(&lines, node);
 		line = get_next_line(fd);
 	}
+	return (lines);
+}
+
+char	**read_map(const char *filename)
+{
+	int		fd;
+	t_list	*lines;
+	char	**map;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
+	lines = read_lines(fd);
 	close(fd);
 	if (!lines)
-		return (NULL); //TODO error message
+		return (NULL);
 	map = convert_list_to_map(lines);
-	ft_lstclear(&lines, NULL);
+	ft_lstclear(&lines, free);
 	return (map);
+}
+
+void	free_map(char **map)
+{
+	int	i;
+
+	if (!map)
+		return ;
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }
