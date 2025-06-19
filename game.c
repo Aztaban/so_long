@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:33 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/19 00:29:26 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/20 01:03:29 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,20 @@
 
 void	init_game(t_game *game, const char *filename)
 {
+	//validate the file exists.
 	ft_bzero(game, sizeof(t_game));
 	game->map.grid = read_map(filename);
 	if (!game->map.grid)
 		exit_with_error(game, "Failed to read the map!");
+	validate_map(game);
+
+	int	tile_size = 32;
+	int	height = 0;
+	while (game->map.grid[height])
+		height++;
+	int size = ft_strlen(game->map.grid);
+
+
 	game->mlx_display = mlx_init();
 	if (!game->mlx_display)
 		exit_with_error(game, "MLX failed to initalize");
