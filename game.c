@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:33 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/20 01:03:29 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/21 22:26:43 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,31 +20,22 @@ void	init_game(t_game *game, const char *filename)
 	if (!game->map.grid)
 		exit_with_error(game, "Failed to read the map!");
 	validate_map(game);
-
-	int	tile_size = 32;
-	int	height = 0;
-	while (game->map.grid[height])
-		height++;
-	int size = ft_strlen(game->map.grid);
-
-
-	game->mlx_display = mlx_init();
-	if (!game->mlx_display)
-		exit_with_error(game, "MLX failed to initalize");
-	game->win = mlx_new_window(game->mlx_display, WIDTH, HEIGHT, "Hello 42");
-	if (!game->win)
-		exit_with_error(game, "MLX failed to create window");
-	game->img.img = mlx_new_image(game->mlx_display, WIDTH, HEIGHT);
-	if (!game->img.img)
-		exit_with_error(game, "MLX failed to create image");
-	game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bits_per_pixel,
-			&game->img.line_length, &game->img.endian);
-	if (!game->img.addr)
-		exit_with_error(game, "MLX failed to get image data address");
+	init_graphics(game);
+	draw_map(game);
 }
 
 void	exit_game(t_game *game)
 {
+	if (game->textures.wall)
+		mlx_destroy_image(game->mlx_display, game->textures.wall);
+	if (game->textures.floor)
+		mlx_destroy_image(game->mlx_display, game->textures.floor);
+	if (game->textures.collectible)
+		mlx_destroy_image(game->mlx_display, game->textures.collectible);
+	if (game->textures.exit)
+		mlx_destroy_image(game->mlx_display, game->textures.exit);
+	if (game->textures.player)
+		mlx_destroy_image(game->mlx_display, game->textures.player);
 	if (game->img.img)
 		mlx_destroy_image(game->mlx_display, game->img.img);
 	if (game->win)
