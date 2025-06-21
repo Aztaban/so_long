@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 21:31:21 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/21 23:57:34 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/22 00:26:02 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,3 @@ void	init_graphics(t_game *game)
 		exit_with_error(game, "MLX failed to get image data address");
 	load_textures(game);
 }
-

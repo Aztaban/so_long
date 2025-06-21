@@ -6,15 +6,15 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:33 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/21 22:26:43 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/22 00:25:50 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+//validate the file exists.
 void	init_game(t_game *game, const char *filename)
 {
-	//validate the file exists.
 	ft_bzero(game, sizeof(t_game));
 	game->map.grid = read_map(filename);
 	if (!game->map.grid)
@@ -45,7 +45,7 @@ void	exit_game(t_game *game)
 		mlx_destroy_display(game->mlx_display);
 		free(game->mlx_display);
 	}
-	if(game->map.grid)
+	if (game->map.grid)
 		free_map(game->map.grid);
 	exit(0);
 }
