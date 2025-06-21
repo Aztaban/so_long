@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:13:47 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/16 01:20:01 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/21 22:41:17 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 
 static void move_player(t_game *game, int keycode)
 {
+	(void)game;
 	if(keycode == KEY_W)
-		fill_screen(game, 0x00FF0000);
+		return ;
+		//fill_screen(game, 0x00FF0000);
 	else if(keycode == KEY_S)
-		fill_screen(game, 0x0000FF00);
+		//fill_screen(game, 0x0000FF00);
+		return ;
 	else if(keycode == KEY_A)
-		fill_screen(game, 0x000000FF);
+		return ;
+		//fill_screen(game, 0x000000FF);
 	else if(keycode == KEY_D)
-		fill_screen(game, 0xFFFFFFFF);
+		return ;
+		//fill_screen(game, 0xFFFFFFFF);
 }
 
 int	handle_keypress(int keycode, t_game *game)
@@ -39,7 +44,7 @@ int	handle_keypress(int keycode, t_game *game)
 	return (0);
 }
 
-void	fill_screen(t_game *game, int color)
+/* void	fill_screen(t_game *game, int color)
 {
 	int x;
 	int y;
@@ -64,4 +69,4 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
-}
+} */
