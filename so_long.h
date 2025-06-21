@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/20 00:34:25 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/21 22:56:13 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@
 # include "mlx/mlx.h"
 # include "libft/include/libft.h"
 
-# define WIDTH 800
-# define HEIGHT 600
+# define TILE_SIZE 96
 
 # define FLOOR '0'
 # define WALL '1'
@@ -45,14 +44,14 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}	t_img;
+}			t_img;
 
 typedef struct s_player
 {
 	int	x;
 	int	y;
 	int	moves_count;
-}	t_player;
+}				t_player;
 
 typedef struct s_map
 {
@@ -60,7 +59,16 @@ typedef struct s_map
 	int		width;
 	int		height;
 	int		collectible_count;
-}	t_map;
+}				t_map;
+
+typedef struct s_textures
+{
+	void	*wall;
+	void	*floor;
+	void	*collectible;
+	void	*player;
+	void	*exit;
+}				t_textures;
 
 typedef struct s_game
 {
@@ -69,6 +77,7 @@ typedef struct s_game
 	t_img		img;
 	t_map		map;
 	t_player	player;
+	t_textures	textures;
 }				t_game;
 
 void	fill_screen(t_game *game, int color);
@@ -79,6 +88,9 @@ int		handle_keypress(int keycode, t_game *game);
 void	init_game(t_game *game, const char *filename);
 void	exit_game(t_game *game);
 int		close_game(t_game *game);
+
+// graphic.c
+void	init_graphics(t_game *game);
 
 // helpers.c
 void	exit_with_error(t_game *game, char *message);
