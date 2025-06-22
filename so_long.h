@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/21 22:56:13 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/22 02:21:51 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,14 @@
 # define KEY_S 115
 # define KEY_A 97
 # define KEY_D 100
+
+# define ERR_NOT_RECTANGULAR 1
+# define ERR_INVALID_CHAR 2
+# define ERR_PLAYER 3
+# define ERR_EXIT 4
+# define ERR_COLLECTIBLES 5
+# define ERR_WRONG_PATH 6
+# define ERR_WALLS 7
 
 typedef struct s_img
 {
@@ -80,8 +88,13 @@ typedef struct s_game
 	t_textures	textures;
 }				t_game;
 
-void	fill_screen(t_game *game, int color);
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+typedef struct s_count
+{
+	int	player;
+	int	exit;
+	int	collectibles;
+}				t_count;
+
 int		handle_keypress(int keycode, t_game *game);
 
 // game.c
