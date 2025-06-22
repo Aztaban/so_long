@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 01:17:43 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/22 02:43:21 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/22 02:46:39 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,6 @@ static int	validate_format(t_map *map)
 		return (ERR_COLLECTIBLES);
 	map->collectible_count = count.collectibles;
 	return (validate_walls(map));
-}
-
-static int	validate_path(t_map *map)
-{
-	(void)map;
-	return (1);
 }
 
 void	validate_map(t_game *game)

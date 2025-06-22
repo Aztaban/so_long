@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/22 02:21:51 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/22 02:49:07 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,8 @@ void	free_map(char **map);
 
 // draw.c
 void	draw_map(t_game *game);
+
+// validate_path.c
+int		validate_path(t_map *map);
 
 #endif
