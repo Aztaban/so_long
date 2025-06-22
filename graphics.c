@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 21:31:21 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/22 00:26:02 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/22 14:41:57 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ static void	load_textures(t_game *game)
 	int	height;
 
 	game->textures.wall = mlx_xpm_file_to_image(game->mlx_display,
-			"textures/bush96.xpm", &width, &height);
+			"textures/bush64.xpm", &width, &height);
 	game->textures.floor = mlx_xpm_file_to_image(game->mlx_display,
-			"textures/floor96.xpm", &width, &height);
+			"textures/floor64.xpm", &width, &height);
 	game->textures.collectible = mlx_xpm_file_to_image(game->mlx_display,
-			"textures/collectible96.xpm", &width, &height);
+			"textures/collectible64.xpm", &width, &height);
 	game->textures.exit = mlx_xpm_file_to_image(game->mlx_display,
-			"textures/exit96.xpm", &width, &height);
+			"textures/exit64.xpm", &width, &height);
 	game->textures.player = mlx_xpm_file_to_image(game->mlx_display,
-			"textures/player96.xpm", &width, &height);
+			"textures/player64.xpm", &width, &height);
 	if (!game->textures.wall || !game->textures.floor
 		|| !game->textures.collectible || !game->textures.exit
 		|| !game->textures.player)

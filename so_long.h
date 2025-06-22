@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/22 02:49:07 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/22 14:42:05 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "mlx/mlx.h"
 # include "libft/include/libft.h"
 
-# define TILE_SIZE 96
+# define TILE_SIZE 64
 
 # define FLOOR '0'
 # define WALL '1'
