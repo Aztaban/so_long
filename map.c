@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:43 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/22 01:15:08 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/22 01:43:49 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static t_list	*read_lines(int fd)
 		trim = ft_strtrim(line, "\n");
 		free(line);
 		node = ft_lstnew(trim);
-		free(trim);
 		if (!node)
 		{
 			ft_lstclear(&lines, free);
