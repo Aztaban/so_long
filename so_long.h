@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/22 14:42:05 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/23 01:19:25 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define COLLECTIBLE 'C'
 # define EXIT 'E'
 # define PLAYER 'P'
+# define FLOOD 'F'
 
 # define KEY_ESC 65307
 # define KEY_W 119
@@ -117,6 +118,6 @@ void	free_map(char **map);
 void	draw_map(t_game *game);
 
 // validate_path.c
-int		validate_path(t_map *map);
+int		validate_path(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 01:17:43 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/22 02:46:39 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/23 01:43:53 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,23 @@ static int	validate_and_count(char c, t_count *count)
 	return (0);
 }
 
-static int	validate_line(char *line, int width, t_count *count)
+static int	validate_line(t_map *map, t_count *count, t_player *player)
 {
-	int	i;
-	int	error;
+	int		i;
+	int		error;
+	char	*line;
 
-	if ((int)ft_strlen(line) != width)
+	line = map->grid[map->height];
+	if ((int)ft_strlen(line) != map->width)
 		return (ERR_NOT_RECTANGULAR);
 	i = 0;
 	while (line[i])
 	{
+		if (line[i] == PLAYER)
+		{
+			player->x = i;
+			player->y = map->height;
+		}
 		error = validate_and_count(line[i], count);
 		if (error)
 			return (error);
@@ -65,7 +72,7 @@ static int	validate_walls(t_map *map)
 	return (0);
 }
 
-static int	validate_format(t_map *map)
+static int	validate_format(t_map *map, t_player *player)
 {
 	int		error;
 	t_count	count;
@@ -77,7 +84,7 @@ static int	validate_format(t_map *map)
 	map->width = ft_strlen(map->grid[0]);
 	while (map->grid[map->height])
 	{
-		error = validate_line(map->grid[map->height], map->width, &count);
+		error = validate_line(map, &count, player);
 		if (error)
 			return (error);
 		map->height++;
@@ -96,7 +103,7 @@ void	validate_map(t_game *game)
 {
 	int	err;
 
-	err = validate_format(&game->map);
+	err = validate_format(&game->map, &game->player);
 	if (err == ERR_NOT_RECTANGULAR)
 		exit_with_error(game, "Map not rectangular!");
 	else if (err == ERR_INVALID_CHAR)
@@ -109,7 +116,7 @@ void	validate_map(t_game *game)
 		exit_with_error(game, "No collectibles found.");
 	else if (err == ERR_WALLS)
 		exit_with_error(game, "Missing walls around map");
-	err = validate_path(&game->map);
+	err = validate_path(game);
 	if (err == ERR_WRONG_PATH)
-		exit_with_error(game, "wrong map path.");
+		exit_with_error(game, "Wrong map. Exit or collectible not reachable.");
 }
