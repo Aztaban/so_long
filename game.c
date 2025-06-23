@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:33 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/22 00:25:50 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/23 02:52:43 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,12 @@ int	close_game(t_game *game)
 {
 	exit_game(game);
 	return (0);
+}
+
+void	exit_with_error(t_game *game, char *message)
+{
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(message, 2);
+	ft_putchar_fd('\n', 2);
+	exit_game(game);
 }

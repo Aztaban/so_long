@@ -6,7 +6,7 @@
 #    By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/09 23:57:47 by mjusta            #+#    #+#              #
-#    Updated: 2025/06/22 14:40:27 by mjusta           ###   ########.fr        #
+#    Updated: 2025/06/23 02:55:10 by mjusta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRC = main.c controls.c draw.c game.c map.c helpers.c \
+SRC = main.c controls.c draw.c game.c map.c \
 	validate.c graphics.c validate_path.c
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 01:17:43 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/23 01:43:53 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/06/23 02:51:15 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,9 @@ void	validate_map(t_game *game)
 	else if (err == ERR_INVALID_CHAR)
 		exit_with_error(game, "Map contains a forbidden symbol!");
 	else if (err == ERR_PLAYER)
-		exit_with_error(game, "Wrong number of players. Must be exactly 1.");
+		exit_with_error(game, "There must be exactly 1 player!");
 	else if (err == ERR_EXIT)
-		exit_with_error(game, "Wrong number of exits. Must be exactly 1.");
+		exit_with_error(game, "There must be exactly 1 exit!");
 	else if (err == ERR_COLLECTIBLES)
 		exit_with_error(game, "No collectibles found.");
 	else if (err == ERR_WALLS)
