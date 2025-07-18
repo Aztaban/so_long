@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/23 02:52:08 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/18 12:43:54 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-
-// for testing
 # include <stdio.h>
+# include <string.h>
+# include <errno.h>
 
 # include "mlx/mlx.h"
 # include "libft/include/libft.h"
@@ -53,7 +53,7 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}			t_img;
+}				t_img;
 
 typedef struct s_player
 {
@@ -96,6 +96,7 @@ typedef struct s_count
 	int	collectibles;
 }				t_count;
 
+// control.c
 int		handle_keypress(int keycode, t_game *game);
 
 // game.c
