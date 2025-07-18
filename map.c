@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:43 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/22 01:43:49 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/18 14:12:22 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	**read_map(const char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		return (NULL);
+		exit_with_error(NULL, "Failed to open map file");
 	lines = read_lines(fd);
 	close(fd);
 	if (!lines)
