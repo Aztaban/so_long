@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:33 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/18 13:09:15 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/18 14:19:13 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	is_ber_file(const char *filename)
 {
-	size_t len;
+	size_t	len;
 
 	len = ft_strlen(filename);
 	if (len > 4)
@@ -64,7 +64,7 @@ void	exit_game(t_game *game)
 int	close_game(t_game *game)
 {
 	exit_game(game);
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 void	exit_with_error(t_game *game, char *message)
@@ -78,7 +78,7 @@ void	exit_with_error(t_game *game, char *message)
 			ft_putstr_fd(": ", STDERR_FILENO);
 			ft_putstr_fd(strerror(errno), STDERR_FILENO);
 		}
-		ft_putchar_fd('\n', STDERR_FILENO);	
+		ft_putchar_fd('\n', STDERR_FILENO);
 	}
 	if (game)
 		exit_game(game);
