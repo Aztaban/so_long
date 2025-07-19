@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:13:47 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/23 02:54:37 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/19 14:06:29 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@ static void	move_player(t_game *game, int dx, int dy)
 	new_x = game->player.x + dx;
 	new_y = game->player.y + dy;
 	tile = game->map.grid[new_y][new_x];
-	if (tile == WALL)
-		return ;
 	if (tile == COLLECTIBLE)
 	{
 		game->map.grid[new_y][new_x] = FLOOR;
 		game->map.collectible_count--;
 	}
 	if (tile == EXIT && game->map.collectible_count == 0)
+	{
+		ft_printf("You finished with %i steps.\n", ++game->player.moves_count);
 		exit_game(game);
-	if (tile == EXIT)
+	}
+	if (tile == EXIT || tile == WALL)
 		return ;
 	draw_tile(game, FLOOR, game->player.x, game->player.y);
 	game->player.x = new_x;
