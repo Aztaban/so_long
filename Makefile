@@ -6,7 +6,7 @@
 #    By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/09 23:57:47 by mjusta            #+#    #+#              #
-#    Updated: 2025/07/18 11:11:46 by mjusta           ###   ########.fr        #
+#    Updated: 2025/07/19 13:54:33 by mjusta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 MLX_DIR = mlx
 MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
 
-INCLUDES = -I. -I$(LIBFT_DIR) -I$(MLX_DIR)
+INCLUDES = -I. -I$(LIBFT_DIR)/include -I$(MLX_DIR)
 MLX_FLAGS = $(MLX_LIB) -lXext -lX11 -lm
 
 all: $(NAME)

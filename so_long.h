@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/18 12:43:54 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/19 13:55:49 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <string.h>
 # include <errno.h>
 
-# include "mlx/mlx.h"
-# include "libft/include/libft.h"
+# include "mlx.h"
+# include "libft.h"
 
 # define TILE_SIZE 64
 
