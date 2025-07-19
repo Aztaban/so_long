@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:33 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/18 14:19:13 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/19 13:49:17 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	exit_game(t_game *game)
 	}
 	if (game->map.grid)
 		free_map(game->map.grid);
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
 
 int	close_game(t_game *game)
