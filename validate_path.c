@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 02:48:07 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/23 01:19:08 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/19 13:47:16 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ static void	flood_fill(char **map, int x, int y)
 {
 	if (map[y][x] == WALL || map[y][x] == FLOOD)
 		return ;
+	if (map[y][x] == EXIT)
+	{
+		map[y][x] = FLOOD;
+		return ;
+	}
 	map[y][x] = FLOOD;
 	flood_fill(map, x + 1, y);
 	flood_fill(map, x - 1, y);
