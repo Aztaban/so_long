@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/19 13:55:49 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/20 22:10:01 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,8 @@ void	draw_tile(t_game *game, char tile, int x, int y);
 
 // validate_path.c
 int		validate_path(t_game *game);
+
+// ui.c
+void	draw_move_count(t_game *game);
 
 #endif

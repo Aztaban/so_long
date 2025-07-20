@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:13:47 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/19 14:06:29 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/20 22:43:03 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ static void	move_player(t_game *game, int dx, int dy)
 	game->player.y = new_y;
 	game->player.moves_count++;
 	draw_tile(game, PLAYER, game->player.x, game->player.y);
-	ft_printf("You walked %d steps\n", game->player.moves_count);
+	draw_move_count(game);
+	//ft_printf("You walked %d steps\n", game->player.moves_count);
 }
 
 int	handle_keypress(int keycode, t_game *game)
