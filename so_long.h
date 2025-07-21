@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/21 02:01:39 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/21 22:40:44 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ typedef struct s_textures
 {
 	void		*wall;
 	void		*floor;
-	void		*collectible;
 	void		*exit;
 	void		*exit_open;
+	t_sprite	collectible;
 	t_sprite	player;
 	//t_sprite	enemy;
 }				t_textures;
