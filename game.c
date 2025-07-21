@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:33 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/19 13:49:17 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/21 02:10:01 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	exit_game(t_game *game)
 		mlx_destroy_image(game->mlx_display, game->textures.collectible);
 	if (game->textures.exit)
 		mlx_destroy_image(game->mlx_display, game->textures.exit);
+	// TODO make function to load sprite textures for player, collectible and enemy later.
 	if (game->textures.player)
 		mlx_destroy_image(game->mlx_display, game->textures.player);
 	if (game->img.img)

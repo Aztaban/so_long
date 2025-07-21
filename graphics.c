@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 21:31:21 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/22 14:41:57 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/21 02:13:06 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,21 @@ static void	load_textures(t_game *game)
 	int	height;
 
 	game->textures.wall = mlx_xpm_file_to_image(game->mlx_display,
-			"textures/bush64.xpm", &width, &height);
+			"textures/bush.xpm", &width, &height);
 	game->textures.floor = mlx_xpm_file_to_image(game->mlx_display,
-			"textures/floor64.xpm", &width, &height);
+			"textures/floor.xpm", &width, &height);
 	game->textures.collectible = mlx_xpm_file_to_image(game->mlx_display,
-			"textures/collectible64.xpm", &width, &height);
+			"textures/collectible.xpm", &width, &height);
 	game->textures.exit = mlx_xpm_file_to_image(game->mlx_display,
-			"textures/exit64.xpm", &width, &height);
+			"textures/exit.xpm", &width, &height);
+	game->textures.exit_open = mlx_xpm_file_to_image(game->mlx_display,
+			"textures/exit.xpm", &width, &height);
+	// TODO Modify texture load for player, enemy and collectibles. 
 	game->textures.player = mlx_xpm_file_to_image(game->mlx_display,
-			"textures/player64.xpm", &width, &height);
+			"textures/player.xpm", &width, &height);
 	if (!game->textures.wall || !game->textures.floor
 		|| !game->textures.collectible || !game->textures.exit
-		|| !game->textures.player)
+		|| !game->textures.exit_open || !game->textures.player)
 		exit_with_error(game, "Failed to load textures.");
 }
 

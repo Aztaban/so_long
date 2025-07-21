@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 01:17:43 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/23 02:51:15 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/21 02:14:17 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 static int	validate_and_count(char c, t_count *count)
 {
 	if (c == PLAYER)
+		// TODO get player coords here
 		count->player++;
 	else if (c == EXIT)
+		// TODO get exit coord here
 		count->exit++;
 	else if (c == COLLECTIBLE)
 		count->collectibles++;
