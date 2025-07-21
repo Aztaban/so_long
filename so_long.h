@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/21 22:40:44 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/21 23:41:25 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,11 +117,13 @@ typedef struct s_count
 // control.c
 int		handle_keypress(int keycode, t_game *game);
 
-// game.c
-void	init_game(t_game *game, const char *filename);
+// cleanup.c
 void	exit_game(t_game *game);
 int		close_game(t_game *game);
 void	exit_with_error(t_game *game, char *message);
+
+// game.c
+void	init_game(t_game *game, const char *filename);
 
 // graphic.c
 void	init_graphics(t_game *game);
