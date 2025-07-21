@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/20 22:10:01 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/21 02:01:39 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@
 # define ERR_WRONG_PATH 6
 # define ERR_WALLS 7
 
+# define SPR_UP 'U'
+# define SPR_DOWN 'D'
+# define SPR_LEFT 'L'
+# define SPR_RIGHT 'R'
+
 typedef struct s_img
 {
 	void	*img;
@@ -57,9 +62,10 @@ typedef struct s_img
 
 typedef struct s_player
 {
-	int	x;
-	int	y;
-	int	moves_count;
+	int		x;
+	int		y;
+	int		moves_count;
+	char	sprite;
 }				t_player;
 
 typedef struct s_map
@@ -68,15 +74,27 @@ typedef struct s_map
 	int		width;
 	int		height;
 	int		collectible_count;
+	int		x_exit;
+	int		y_exit;
 }				t_map;
+
+typedef struct s_sprite
+{
+	void	*up;
+	void	*down;
+	void	*left;
+	void	*right;
+}				t_sprite;
 
 typedef struct s_textures
 {
-	void	*wall;
-	void	*floor;
-	void	*collectible;
-	void	*player;
-	void	*exit;
+	void		*wall;
+	void		*floor;
+	void		*collectible;
+	void		*exit;
+	void		*exit_open;
+	t_sprite	player;
+	//t_sprite	enemy;
 }				t_textures;
 
 typedef struct s_game
