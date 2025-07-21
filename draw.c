@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:57 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/21 02:11:54 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/22 00:46:00 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,30 @@ void	draw_tile(t_game *game, char tile, int x, int y)
 {
 	void	*img;
 
-	if (tile == '1')
+	if (tile == WALL)
 		img = game->textures.wall;
-	else if (tile == '0')
+	else if (tile == FLOOR)
 		img = game->textures.floor;
-	else if (tile == 'C')
-		// TODO Change collectible textures print to loopt through sprite (iddle animation)
-		img = game->textures.collectible;
-	else if (tile == 'E')
+	else if (tile == COLLECTIBLE)
+		img = game->textures.collectible.down;
+	else if (tile == EXIT)
 	{
 		if (game->map.collectible_count == 0)
 			img = game->textures.exit_open;
 		else
 			img = game->textures.exit;
 	}
-	else if (tile == 'P')
-		// TODO Add method for drawing player sprites (enemy later)
-			img = game->textures.player;
+	else if (tile == PLAYER)
+	{
+		if (game->player.sprite == SPR_UP)
+			img = game->textures.player.up;
+		else if (game->player.sprite == SPR_LEFT)
+			img = game->textures.player.left;
+		else if (game->player.sprite == SPR_RIGHT)
+			img = game->textures.player.right;
+		else
+			img = game->textures.player.down;
+	}
 	else
 		return ;
 	mlx_put_image_to_window(game->mlx_display, game->win,

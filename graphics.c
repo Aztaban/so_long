@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 21:31:21 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/21 22:40:26 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/22 00:49:57 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static void	load_textures(t_game *game)
 	int	width;
 	int	height;
 
-	load_sprite(game, &game->textures.player, "textures/sprite/player");
+	load_sprite(game, &game->textures.player, "textures/sprites/player");
 	load_sprite(game, &game->textures.collectible,
-		"textures/sprite/collectible");
+		"textures/sprites/collectible");
 	game->textures.wall = mlx_xpm_file_to_image(game->mlx_display,
 			"textures/bush.xpm", &width, &height);
 	game->textures.floor = mlx_xpm_file_to_image(game->mlx_display,
@@ -49,7 +49,7 @@ static void	load_textures(t_game *game)
 	game->textures.exit = mlx_xpm_file_to_image(game->mlx_display,
 			"textures/exit.xpm", &width, &height);
 	game->textures.exit_open = mlx_xpm_file_to_image(game->mlx_display,
-			"textures/exit.xpm", &width, &height);
+			"textures/exit_opened.xpm", &width, &height);
 	if (!game->textures.wall || !game->textures.floor
 		|| !game->textures.exit || !game->textures.exit_open)
 		exit_with_error(game, "Failed to load textures.");
