@@ -6,21 +6,30 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 01:17:43 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/21 02:14:17 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/21 23:12:13 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdio.h>
 
-static int	validate_and_count(char c, t_count *count)
+static int	validate_and_count(t_game *game, t_count *count, int x)
 {
+	char	c;
+	
+	c = game->map.grid[game->map.height][x];
 	if (c == PLAYER)
-		// TODO get player coords here
+	{	
+		game->player.x = x; 
+		game->player.y = game->map.height; 
 		count->player++;
+	}
 	else if (c == EXIT)
-		// TODO get exit coord here
+	{
+		game->map.x_exit = x;
+		game->map.y_exit = game->map.height;
 		count->exit++;
+	}
 	else if (c == COLLECTIBLE)
 		count->collectibles++;
 	else if (c != WALL && c != FLOOR)
@@ -28,24 +37,19 @@ static int	validate_and_count(char c, t_count *count)
 	return (0);
 }
 
-static int	validate_line(t_map *map, t_count *count, t_player *player)
+static int	validate_line(t_game *game, t_count *count)
 {
 	int		i;
 	int		error;
 	char	*line;
 
-	line = map->grid[map->height];
-	if ((int)ft_strlen(line) != map->width)
+	line = game->map.grid[game->map.height];
+	if ((int)ft_strlen(line) != game->map.width)
 		return (ERR_NOT_RECTANGULAR);
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] == PLAYER)
-		{
-			player->x = i;
-			player->y = map->height;
-		}
-		error = validate_and_count(line[i], count);
+		error = validate_and_count(game, count, i);
 		if (error)
 			return (error);
 		i++;
@@ -74,7 +78,7 @@ static int	validate_walls(t_map *map)
 	return (0);
 }
 
-static int	validate_format(t_map *map, t_player *player)
+static int	validate_format(t_game *game)
 {
 	int		error;
 	t_count	count;
@@ -82,14 +86,14 @@ static int	validate_format(t_map *map, t_player *player)
 	count.player = 0;
 	count.exit = 0;
 	count.collectibles = 0;
-	map->height = 0;
-	map->width = ft_strlen(map->grid[0]);
-	while (map->grid[map->height])
+	game->map.height = 0;
+	game->map.width = ft_strlen(game->map.grid[0]);
+	while (game->map.grid[game->map.height])
 	{
-		error = validate_line(map, &count, player);
+		error = validate_line(game, &count);
 		if (error)
 			return (error);
-		map->height++;
+		game->map.height++;
 	}
 	if (count.player != 1)
 		return (ERR_PLAYER);
@@ -97,15 +101,15 @@ static int	validate_format(t_map *map, t_player *player)
 		return (ERR_EXIT);
 	if (count.collectibles < 1)
 		return (ERR_COLLECTIBLES);
-	map->collectible_count = count.collectibles;
-	return (validate_walls(map));
+	game->map.collectible_count = count.collectibles;
+	return (validate_walls(&game->map));
 }
 
 void	validate_map(t_game *game)
 {
 	int	err;
 
-	err = validate_format(&game->map, &game->player);
+	err = validate_format(game);
 	if (err == ERR_NOT_RECTANGULAR)
 		exit_with_error(game, "Map not rectangular!");
 	else if (err == ERR_INVALID_CHAR)
