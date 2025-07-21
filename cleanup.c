@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:39:07 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/21 23:56:20 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/22 00:58:35 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static void	free_textures(t_game *game)
 		mlx_destroy_image(game->mlx_display, game->textures.floor);
 	if (game->textures.exit)
 		mlx_destroy_image(game->mlx_display, game->textures.exit);
+	if (game->textures.exit_open)
+		mlx_destroy_image(game->mlx_display, game->textures.exit_open);
 	if (game->img.img)
 		mlx_destroy_image(game->mlx_display, game->img.img);
 }
