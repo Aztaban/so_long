@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 21:31:21 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/22 00:49:57 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/22 01:32:06 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,23 @@ static void	load_sprite(t_game *game, t_sprite *sprite, const char *base)
 	char	*path;
 
 	path = ft_strjoin(base, "/up.xpm");
-	sprite->up = mlx_xpm_file_to_image(game->mlx_display, path, &w, &h);
+	sprite->frame[SPR_UP] = mlx_xpm_file_to_image(game->mlx_display,
+			path, &w, &h);
 	free(path);
 	path = ft_strjoin(base, "/down.xpm");
-	sprite->down = mlx_xpm_file_to_image(game->mlx_display, path, &w, &h);
+	sprite->frame[SPR_DOWN] = mlx_xpm_file_to_image(game->mlx_display,
+			path, &w, &h);
 	free(path);
 	path = ft_strjoin(base, "/left.xpm");
-	sprite->left = mlx_xpm_file_to_image(game->mlx_display, path, &w, &h);
+	sprite->frame[SPR_LEFT] = mlx_xpm_file_to_image(game->mlx_display,
+			path, &w, &h);
 	free(path);
 	path = ft_strjoin(base, "/right.xpm");
-	sprite->right = mlx_xpm_file_to_image(game->mlx_display, path, &w, &h);
+	sprite->frame[SPR_RIGHT] = mlx_xpm_file_to_image(game->mlx_display,
+			path, &w, &h);
 	free(path);
-	if (!sprite->up || !sprite->down || !sprite->left || !sprite->right)
+	if (!sprite->frame[SPR_UP] || !sprite->frame[SPR_DOWN]
+		|| !sprite->frame[SPR_LEFT] || !sprite->frame[SPR_RIGHT])
 		exit_with_error(game, "Failed to load sprites.");
 }
 

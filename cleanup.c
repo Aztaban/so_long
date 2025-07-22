@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:39:07 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/22 00:58:35 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/22 01:52:51 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 static void	free_sprite(t_game *game, t_sprite *sprite)
 {
-	if (sprite->up)
-		mlx_destroy_image(game->mlx_display, sprite->up);
-	if (sprite->down)
-		mlx_destroy_image(game->mlx_display, sprite->down);
-	if (sprite->left)
-		mlx_destroy_image(game->mlx_display, sprite->left);
-	if (sprite->right)
-		mlx_destroy_image(game->mlx_display, sprite->right);
+	int	i;
+
+	i = 0;
+	while (i < FRAME_COUNT)
+	{
+		if (sprite->frame[i])
+			mlx_destroy_image(game->mlx_display, sprite->frame[i]);
+		i++;
+	}
 }
 
 static void	free_textures(t_game *game)

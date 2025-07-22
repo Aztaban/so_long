@@ -6,7 +6,7 @@
 #    By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/09 23:57:47 by mjusta            #+#    #+#              #
-#    Updated: 2025/07/21 23:39:37 by mjusta           ###   ########.fr        #
+#    Updated: 2025/07/22 02:44:22 by mjusta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRC = main.c controls.c draw.c game.c map.c \
+SRC = main.c controls.c animate.c game.c map.c \
 	validate.c graphics.c validate_path.c ui.c \
-	cleanup.c
+	cleanup.c draw.c
 OBJ = $(SRC:.c=.o)
 
 LIBFT_DIR = libft

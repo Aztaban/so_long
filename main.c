@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:01 by mjusta            #+#    #+#             */
-/*   Updated: 2025/06/21 22:26:01 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/22 02:44:12 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 	init_game(&game, argv[1]);
 	mlx_key_hook(game.win, handle_keypress, &game);
 	mlx_hook(game.win, 17, 0, close_game, &game);
+	mlx_loop_hook(game.mlx_display, game_loop, &game);
 	mlx_loop(game.mlx_display);
 	return (0);
 }

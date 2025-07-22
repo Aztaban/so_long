@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:57 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/22 00:46:00 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/22 03:13:00 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	draw_tile(t_game *game, char tile, int x, int y)
 	else if (tile == FLOOR)
 		img = game->textures.floor;
 	else if (tile == COLLECTIBLE)
-		img = game->textures.collectible.down;
+		img = game->textures.collectible.frame[SPR_DOWN];
 	else if (tile == EXIT)
 	{
 		if (game->map.collectible_count == 0)
@@ -30,16 +30,7 @@ void	draw_tile(t_game *game, char tile, int x, int y)
 			img = game->textures.exit;
 	}
 	else if (tile == PLAYER)
-	{
-		if (game->player.sprite == SPR_UP)
-			img = game->textures.player.up;
-		else if (game->player.sprite == SPR_LEFT)
-			img = game->textures.player.left;
-		else if (game->player.sprite == SPR_RIGHT)
-			img = game->textures.player.right;
-		else
-			img = game->textures.player.down;
-	}
+		img = game->textures.player.frame[game->textures.player.current];
 	else
 		return ;
 	mlx_put_image_to_window(game->mlx_display, game->win,

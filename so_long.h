@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/21 23:41:25 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/22 03:06:55 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include "libft.h"
 
 # define TILE_SIZE 64
+# define FRAME_COUNT 4
 
 # define FLOOR '0'
 # define WALL '1'
@@ -46,10 +47,10 @@
 # define ERR_WRONG_PATH 6
 # define ERR_WALLS 7
 
-# define SPR_UP 'U'
-# define SPR_DOWN 'D'
-# define SPR_LEFT 'L'
-# define SPR_RIGHT 'R'
+# define SPR_DOWN 0
+# define SPR_LEFT 1
+# define SPR_RIGHT 2
+# define SPR_UP 3
 
 typedef struct s_img
 {
@@ -80,10 +81,8 @@ typedef struct s_map
 
 typedef struct s_sprite
 {
-	void	*up;
-	void	*down;
-	void	*left;
-	void	*right;
+	void	*frame[FRAME_COUNT];
+	int		current;
 }				t_sprite;
 
 typedef struct s_textures
@@ -116,6 +115,9 @@ typedef struct s_count
 
 // control.c
 int		handle_keypress(int keycode, t_game *game);
+
+// animate.c
+int		game_loop(t_game *game);
 
 // cleanup.c
 void	exit_game(t_game *game);
