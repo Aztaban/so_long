@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 01:17:43 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/24 00:30:51 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/24 01:32:20 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 static int	validate_and_count(t_game *game, t_count *count, int x)
 {
 	char	c;
-	
+
 	c = game->map.grid[game->map.height][x];
 	if (c == PLAYER)
-	{	
-		game->player.x = x; 
-		game->player.y = game->map.height; 
+	{
+		game->player.x = x;
+		game->player.y = game->map.height;
 		count->player++;
 	}
 	else if (c == EXIT)
