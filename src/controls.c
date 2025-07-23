@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:13:47 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/24 01:04:43 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/24 01:24:20 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	handle_tile(t_game *game, int x, int y)
 		return (0);
 	else if (tile == ENEMY)
 	{
-		ft_printf("Orcs got you after %i steps.\n", ++game->player.moves_count);
+		ft_printf("Orcs got you after  %i steps.\n", ++game->player.moves_count);
 		exit_game(game);
 	}
 	return (1);
