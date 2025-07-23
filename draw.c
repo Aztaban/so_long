@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:57 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/22 03:13:00 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/24 00:40:23 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	draw_tile(t_game *game, char tile, int x, int y)
 	}
 	else if (tile == PLAYER)
 		img = game->textures.player.frame[game->textures.player.current];
+	else if (tile == ENEMY)
+		img = game->textures.enemy.frame[game->textures.enemy.current];
 	else
 		return ;
 	mlx_put_image_to_window(game->mlx_display, game->win,

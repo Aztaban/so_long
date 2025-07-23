@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/22 03:06:55 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/24 00:32:50 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define EXIT 'E'
 # define PLAYER 'P'
 # define FLOOD 'F'
+# define ENEMY 'X'
 
 # define KEY_ESC 65307
 # define KEY_W 119
@@ -93,7 +94,7 @@ typedef struct s_textures
 	void		*exit_open;
 	t_sprite	collectible;
 	t_sprite	player;
-	//t_sprite	enemy;
+	t_sprite	enemy;
 }				t_textures;
 
 typedef struct s_game

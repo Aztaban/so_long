@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 21:31:21 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/22 01:32:06 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/24 00:34:58 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static void	load_textures(t_game *game)
 	int	height;
 
 	load_sprite(game, &game->textures.player, "textures/sprites/player");
+	load_sprite(game, &game->textures.enemy, "textures/sprites/enemy");
 	load_sprite(game, &game->textures.collectible,
 		"textures/sprites/collectible");
 	game->textures.wall = mlx_xpm_file_to_image(game->mlx_display,

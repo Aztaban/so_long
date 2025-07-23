@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:39:07 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/22 01:52:51 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/24 00:43:17 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	free_textures(t_game *game)
 {
 	free_sprite(game, &game->textures.player);
 	free_sprite(game, &game->textures.collectible);
+	free_sprite(game, &game->textures.enemy);
 	if (game->textures.wall)
 		mlx_destroy_image(game->mlx_display, game->textures.wall);
 	if (game->textures.floor)

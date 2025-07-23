@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:13:47 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/22 03:11:27 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/24 01:04:43 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,37 @@ static void	handle_collectible(t_game *game, int x, int y)
 		draw_tile(game, EXIT, game->map.x_exit, game->map.y_exit);
 }
 
-static void	move_player(t_game *game, int dx, int dy)
+static int	handle_tile(t_game *game, int x, int y)
 {
-	int		new_x;
-	int		new_y;
 	char	tile;
 
-	new_x = game->player.x + dx;
-	new_y = game->player.y + dy;
-	tile = game->map.grid[new_y][new_x];
+	tile = game->map.grid[y][x];
 	if (tile == COLLECTIBLE)
-		handle_collectible(game, new_x, new_y);
-	if (tile == EXIT && game->map.collectible_count == 0)
+		handle_collectible(game, x, y);
+	else if (tile == EXIT && game->map.collectible_count == 0)
 	{
 		ft_printf("You finished with %i steps.\n", ++game->player.moves_count);
 		exit_game(game);
 	}
-	if (tile == EXIT || tile == WALL)
+	else if (tile == EXIT || tile == WALL)
+		return (0);
+	else if (tile == ENEMY)
+	{
+		ft_printf("Orcs got you after %i steps.\n", ++game->player.moves_count);
+		exit_game(game);
+	}
+	return (1);
+}
+
+static void	move_player(t_game *game, int dx, int dy)
+{
+	int		new_x;
+	int		new_y;
+	
+
+	new_x = game->player.x + dx;
+	new_y = game->player.y + dy;
+	if (!handle_tile(game, new_x, new_y))
 		return ;
 	draw_tile(game, FLOOR, game->player.x, game->player.y);
 	game->player.x = new_x;

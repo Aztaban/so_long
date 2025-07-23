@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 01:17:43 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/21 23:12:13 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/24 00:30:51 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	validate_and_count(t_game *game, t_count *count, int x)
 	}
 	else if (c == COLLECTIBLE)
 		count->collectibles++;
-	else if (c != WALL && c != FLOOR)
+	else if (c != WALL && c != FLOOR && c != ENEMY)
 		return (ERR_INVALID_CHAR);
 	return (0);
 }
