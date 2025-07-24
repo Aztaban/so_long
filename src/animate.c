@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 02:37:53 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/22 03:01:23 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/24 22:03:40 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 static void	update_collectible_frame(t_game *game)
 {
 	static int	ticks;
+	int			*current;
 
 	ticks++;
-	if (game->textures.collectible.current == SPR_DOWN && ticks < 4000)
+	current = &game->textures.collectible.current;
+	if (*current == SPR_DOWN && ticks < 2000)
 		return ;
-	if (ticks < 2000)
+	if (ticks < 1000)
 		return ;
 	ticks = 0;
-	game->textures.collectible.current++;
-	if (game->textures.collectible.current >= FRAME_COUNT)
-		game->textures.collectible.current = 0;
+	(*current)++;
+	if (*current >= FRAME_COUNT)
+		*current = 0;
 }
 
 static void	redraw_collectibles(t_game *game)
