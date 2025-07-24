@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 01:39:36 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/24 03:13:16 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/24 03:25:34 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,25 @@ static void	move_enemy(t_game *game, int x, int y)
 	draw_tile(game, ENEMY, new_x, new_y);
 }
 
+static void	fix_enemy_grid(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < game->map.height)
+	{
+		x = 0;
+		while (x < game->map.width)
+		{
+			if (game->map.grid[y][x] == FLOOD)
+				game->map.grid[y][x] = ENEMY;
+			x++;
+		}
+		y++;
+	}
+}
+
 void	update_enemies(t_game *game)
 {
 	int	x;
@@ -68,16 +87,5 @@ void	update_enemies(t_game *game)
 		}
 		y++;
 	}
-	y = 0;
-	while (y < game->map.height)
-	{
-		x = 0;
-		while (x < game->map.width)
-		{
-			if (game->map.grid[y][x] == FLOOD)
-				game->map.grid[y][x] = ENEMY;
-			x++;
-		}
-		y++;
-	}
+	fix_enemy_grid(game);
 }
