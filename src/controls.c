@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:13:47 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/24 01:33:14 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/24 02:43:41 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	move_player(t_game *game, int dx, int dy)
 	game->player.y = new_y;
 	game->player.moves_count++;
 	draw_tile(game, PLAYER, game->player.x, game->player.y);
+	update_enemies(game);
 	draw_move_count(game);
 }
 

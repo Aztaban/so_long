@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/24 00:32:50 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/24 01:44:20 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,6 @@ typedef struct s_count
 	int	collectibles;
 }				t_count;
 
-// control.c
-int		handle_keypress(int keycode, t_game *game);
-
 // animate.c
 int		game_loop(t_game *game);
 
@@ -124,6 +121,16 @@ int		game_loop(t_game *game);
 void	exit_game(t_game *game);
 int		close_game(t_game *game);
 void	exit_with_error(t_game *game, char *message);
+
+// control.c
+int		handle_keypress(int keycode, t_game *game);
+
+// draw.c
+void	draw_map(t_game *game);
+void	draw_tile(t_game *game, char tile, int x, int y);
+
+// enemy.c
+void	update_enemies(t_game *game);
 
 // game.c
 void	init_game(t_game *game, const char *filename);
@@ -133,17 +140,15 @@ void	init_graphics(t_game *game);
 
 // map.c
 char	**read_map(const char *filename);
-void	validate_map(t_game *game);
 void	free_map(char **map);
-
-// draw.c
-void	draw_map(t_game *game);
-void	draw_tile(t_game *game, char tile, int x, int y);
-
-// validate_path.c
-int		validate_path(t_game *game);
 
 // ui.c
 void	draw_move_count(t_game *game);
+
+// validate.c
+void	validate_map(t_game *game);
+
+// validate_path.c
+int		validate_path(t_game *game);
 
 #endif

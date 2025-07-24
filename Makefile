@@ -6,7 +6,7 @@
 #    By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/09 23:57:47 by mjusta            #+#    #+#              #
-#    Updated: 2025/07/24 01:28:43 by mjusta           ###   ########.fr        #
+#    Updated: 2025/07/24 01:37:35 by mjusta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,17 +19,18 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRC = $(SRC_DIR)/main.c \
-			$(SRC_DIR)/controls.c \
-			$(SRC_DIR)/animate.c \
-			$(SRC_DIR)/game.c \
-			$(SRC_DIR)/map.c \
-			$(SRC_DIR)/validate.c \
-			$(SRC_DIR)/graphics.c \
-			$(SRC_DIR)/validate_path.c \
-			$(SRC_DIR)/ui.c \
+SRC = $(SRC_DIR)/animate.c \
 			$(SRC_DIR)/cleanup.c \
-			$(SRC_DIR)/draw.c
+			$(SRC_DIR)/controls.c \
+			$(SRC_DIR)/draw.c \
+			$(SRC_DIR)/enemy.c \
+			$(SRC_DIR)/game.c \
+			$(SRC_DIR)/graphics.c \
+			$(SRC_DIR)/main.c \
+			$(SRC_DIR)/map.c \
+			$(SRC_DIR)/ui.c \
+			$(SRC_DIR)/validate.c \
+			$(SRC_DIR)/validate_path.c
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
