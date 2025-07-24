@@ -6,27 +6,28 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 01:39:36 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/24 02:57:03 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/07/24 03:13:16 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	decide_enemy_move(int x, int y, int *new_x, int *new_y)
+static int	decide_enemy_move(int x, int y, int *new_x, int *new_y)
 {
 	int	random;
 
 	random = rand() % 4;
 	*new_x = x;
 	*new_y = y;
-	if (random == 0)
+	if (random == SPR_RIGHT)
 		(*new_x)++;
-	else if (random == 1)
+	else if (random == SPR_LEFT)
 		(*new_x)--;
-	else if (random == 2)
+	else if (random == SPR_DOWN)
 		(*new_y)++;
-	else if (random == 3)
+	else if (random == SPR_UP)
 		(*new_y)--;
+	return (random);
 }
 
 static void	move_enemy(t_game *game, int x, int y)
@@ -35,7 +36,7 @@ static void	move_enemy(t_game *game, int x, int y)
 	int		new_y;
 	char	tile;
 
-	decide_enemy_move(x, y, &new_x, &new_y);
+	game->textures.enemy.current = decide_enemy_move(x, y, &new_x, &new_y);
 	tile = game->map.grid[new_y][new_x];
 	if (new_x == game->player.x && new_y == game->player.y)
 	{
