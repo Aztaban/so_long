@@ -6,12 +6,15 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 01:39:36 by mjusta            #+#    #+#             */
-/*   Updated: 2025/08/03 23:45:45 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/08/04 00:34:21 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// Randomly determines enemy movement direction (up/down/left/right).
+// Updates new_x and new_y based on the chosen direction.
+// Returns the direction as a sprite state.
 static int	decide_enemy_move(int x, int y, int *new_x, int *new_y)
 {
 	int	random;
@@ -30,6 +33,9 @@ static int	decide_enemy_move(int x, int y, int *new_x, int *new_y)
 	return (random);
 }
 
+// Attempts to move an enemy from (x, y) to a new position.
+// If the new position is the player, triggers game over.
+// Otherwise, updates grid and redraws enemy.
 static void	move_enemy(t_game *game, int x, int y)
 {
 	int		new_x;
@@ -51,6 +57,7 @@ static void	move_enemy(t_game *game, int x, int y)
 	draw_tile(game, ENEMY, new_x, new_y);
 }
 
+// Restores the map state by converting temporary FLOOD marks back to ENEMY.
 static void	fix_enemy_grid(t_game *game)
 {
 	int	x;

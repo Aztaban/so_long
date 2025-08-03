@@ -6,12 +6,14 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 21:55:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/24 02:25:53 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/08/04 00:39:29 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// Clears a rectangular area on screen to redraw UI text.
+// Used to avoid overlapping text. Fills the area with the given color.
 void	clear_text_area(t_game *game, int w, int h, int color)
 {
 	int	i;
@@ -30,6 +32,8 @@ void	clear_text_area(t_game *game, int w, int h, int color)
 	}
 }
 
+// Displays the player's move count in the top-left corner of the game window.
+// Clears previous text first, then renders new step count.
 void	draw_move_count(t_game *game)
 {
 	char	*count_str;

@@ -6,12 +6,14 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 02:48:07 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/19 13:47:16 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/08/04 00:40:45 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// Creates a deep copy of the map grid up to the specified height.
+// Returns a new 2D array or NULL on allocation failure.
 static char	**copy_map(char **map, int height)
 {
 	char	**copy;
@@ -32,6 +34,8 @@ static char	**copy_map(char **map, int height)
 	return (copy);
 }
 
+// Recursively marks all reachable tiles from (x, y) using flood-fill.
+// Stops at walls and already-flooded tiles. Marks exits and collectibles.
 static void	flood_fill(char **map, int x, int y)
 {
 	if (map[y][x] == WALL || map[y][x] == FLOOD)
@@ -48,6 +52,8 @@ static void	flood_fill(char **map, int x, int y)
 	flood_fill(map, x, y - 1);
 }
 
+// Scans the flooded map to check if any collectibles or exits remain.
+// Returns error if any remain, 0 if all were reachable.
 static int	check_path(char **map)
 {
 	int	x;
@@ -68,6 +74,8 @@ static int	check_path(char **map)
 	return (0);
 }
 
+// Validates that all collectibles and the exit are reachable via flood fill.
+// Returns 0 if valid, or an error code if unreachable.
 int	validate_path(t_game *game)
 {
 	char	**copy;

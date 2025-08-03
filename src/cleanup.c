@@ -6,12 +6,13 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 23:39:07 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/24 00:43:17 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/08/04 00:51:43 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// Frees all frames in a sprite's animation set using MLX.
 static void	free_sprite(t_game *game, t_sprite *sprite)
 {
 	int	i;
@@ -25,6 +26,7 @@ static void	free_sprite(t_game *game, t_sprite *sprite)
 	}
 }
 
+// Frees all game textures including floor, walls, sprites, and exit variants.
 static void	free_textures(t_game *game)
 {
 	free_sprite(game, &game->textures.player);
@@ -42,6 +44,7 @@ static void	free_textures(t_game *game)
 		mlx_destroy_image(game->mlx_display, game->img.img);
 }
 
+// Frees all allocated resources and exits the game cleanly.
 void	exit_game(t_game *game)
 {
 	free_textures(game);
@@ -57,12 +60,15 @@ void	exit_game(t_game *game)
 	exit(EXIT_SUCCESS);
 }
 
+// Hook-compatible wrapper to trigger clean exit on window close event.
 int	close_game(t_game *game)
 {
 	exit_game(game);
 	return (EXIT_SUCCESS);
 }
 
+// Displays an error message and exits the game cleanly if game pointer exists.
+// If no game pointer, exits with failure.
 void	exit_with_error(t_game *game, char *message)
 {
 	ft_putstr_fd("Error\n", STDERR_FILENO);

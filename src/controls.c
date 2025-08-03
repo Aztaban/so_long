@@ -6,12 +6,14 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:13:47 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/24 02:43:41 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/08/04 00:52:28 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// Handles when the player moves onto a collectible.
+// Updates map state, decreases collectible count, and reveals the exit.
 static void	handle_collectible(t_game *game, int x, int y)
 {
 	game->map.grid[y][x] = FLOOR;
@@ -20,6 +22,8 @@ static void	handle_collectible(t_game *game, int x, int y)
 		draw_tile(game, EXIT, game->map.x_exit, game->map.y_exit);
 }
 
+// Handles logic based on the tile the player is attempting to move into.
+// Returns 1 if movement is allowed, 0 otherwise.
 static int	handle_tile(t_game *game, int x, int y)
 {
 	char	tile;
@@ -42,6 +46,8 @@ static int	handle_tile(t_game *game, int x, int y)
 	return (1);
 }
 
+// Moves the player by the given offset (dx,dy) if the dest. tile allows it.
+// Updates position, step count, redraws the map, and triggers enemy movement.
 static void	move_player(t_game *game, int dx, int dy)
 {
 	int		new_x;
@@ -60,6 +66,8 @@ static void	move_player(t_game *game, int dx, int dy)
 	draw_move_count(game);
 }
 
+// Responds to keypress events (WASD or ESC).
+// Updates player direction and initiates movement or exits the game.
 int	handle_keypress(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)

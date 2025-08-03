@@ -6,12 +6,15 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 02:37:53 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/24 22:03:40 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/08/04 00:46:01 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// Updates the current collectible animation frame every X ticks.
+// Slows down animation by checking a static counter.
+// Cycles through SPR_UP to SPR_RIGHT.
 static void	update_collectible_frame(t_game *game)
 {
 	static int	ticks;
@@ -29,6 +32,7 @@ static void	update_collectible_frame(t_game *game)
 		*current = 0;
 }
 
+// Redraws all collectible tiles using the current animation frame.
 static void	redraw_collectibles(t_game *game)
 {
 	int	x;
@@ -53,6 +57,8 @@ static void	redraw_collectibles(t_game *game)
 	}
 }
 
+// Main animation loop hook called by MLX.
+// Updates the collectible frame and redraws them.
 int	game_loop(t_game *game)
 {
 	update_collectible_frame(game);

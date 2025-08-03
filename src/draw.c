@@ -6,12 +6,14 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:57 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/24 00:40:23 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/08/04 00:42:22 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// Draws a single tile at position (x, y) based on the tile type.
+// Selects the appropriate image from the texture set and renders it.
 void	draw_tile(t_game *game, char tile, int x, int y)
 {
 	void	*img;
@@ -39,6 +41,7 @@ void	draw_tile(t_game *game, char tile, int x, int y)
 		img, x * TILE_SIZE, y * TILE_SIZE);
 }
 
+// Iterates through the map grid and draws each tile on the window.
 void	draw_map(t_game *game)
 {
 	int	y;

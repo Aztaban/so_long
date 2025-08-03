@@ -6,13 +6,15 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:18 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/24 01:44:20 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/08/04 00:50:31 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+// so_long.h - Main header for the So Long game project.
+// Defines constants, types, and function prototypes used throughout the game.
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -23,9 +25,11 @@
 # include "mlx.h"
 # include "libft.h"
 
+// === General Config ===
 # define TILE_SIZE 64
 # define FRAME_COUNT 4
 
+// === Map Symbols ===
 # define FLOOR '0'
 # define WALL '1'
 # define COLLECTIBLE 'C'
@@ -34,12 +38,14 @@
 # define FLOOD 'F'
 # define ENEMY 'X'
 
+// === Key Codes (WASD + ESC) ===
 # define KEY_ESC 65307
 # define KEY_W 119
 # define KEY_S 115
 # define KEY_A 97
 # define KEY_D 100
 
+// === Error Codes ===
 # define ERR_NOT_RECTANGULAR 1
 # define ERR_INVALID_CHAR 2
 # define ERR_PLAYER 3
@@ -48,11 +54,13 @@
 # define ERR_WRONG_PATH 6
 # define ERR_WALLS 7
 
+// === Sprite Directions ===
 # define SPR_DOWN 0
 # define SPR_LEFT 1
 # define SPR_RIGHT 2
 # define SPR_UP 3
 
+// Image buffer metadata (for advanced MLX image use)
 typedef struct s_img
 {
 	void	*img;
@@ -62,6 +70,7 @@ typedef struct s_img
 	int		endian;
 }				t_img;
 
+// Player position, move counter, and last direction
 typedef struct s_player
 {
 	int		x;
@@ -70,6 +79,7 @@ typedef struct s_player
 	char	sprite;
 }				t_player;
 
+// Map grid and properties
 typedef struct s_map
 {
 	char	**grid;
@@ -80,12 +90,14 @@ typedef struct s_map
 	int		y_exit;
 }				t_map;
 
+// Holds multiple frames for animated sprites
 typedef struct s_sprite
 {
 	void	*frame[FRAME_COUNT];
 	int		current;
 }				t_sprite;
 
+// All loaded textures for the game
 typedef struct s_textures
 {
 	void		*wall;
@@ -97,6 +109,7 @@ typedef struct s_textures
 	t_sprite	enemy;
 }				t_textures;
 
+// Game-wide state and resources
 typedef struct s_game
 {
 	void		*mlx_display;
@@ -107,6 +120,7 @@ typedef struct s_game
 	t_textures	textures;
 }				t_game;
 
+// Counters used during map validation
 typedef struct s_count
 {
 	int	player;
@@ -114,41 +128,37 @@ typedef struct s_count
 	int	collectibles;
 }				t_count;
 
-// animate.c
+// === Game Loop ===
 int		game_loop(t_game *game);
 
-// cleanup.c
+// === Cleanup & Exit ===
 void	exit_game(t_game *game);
 int		close_game(t_game *game);
 void	exit_with_error(t_game *game, char *message);
 
-// control.c
+// === Controls ===
 int		handle_keypress(int keycode, t_game *game);
 
-// draw.c
+// === Drawing ===
 void	draw_map(t_game *game);
 void	draw_tile(t_game *game, char tile, int x, int y);
 
-// enemy.c
+// === Enemies ===
 void	update_enemies(t_game *game);
 
-// game.c
+// === Game Setup ===
 void	init_game(t_game *game, const char *filename);
-
-// graphic.c
 void	init_graphics(t_game *game);
 
-// map.c
+// === Map Handling ===
 char	**read_map(const char *filename);
 void	free_map(char **map);
 
-// ui.c
+// === UI ===
 void	draw_move_count(t_game *game);
 
-// validate.c
+// === Map Validation ===
 void	validate_map(t_game *game);
-
-// validate_path.c
 int		validate_path(t_game *game);
 
 #endif

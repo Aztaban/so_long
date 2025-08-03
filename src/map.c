@@ -6,12 +6,14 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:43 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/18 14:12:22 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/08/04 00:37:52 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// Converts a linked list of strings into a NULL-terminated array of strings.
+// Returns the 2D char array map or NULL on allocation failure.
 static char	**convert_list_to_map(t_list *lines)
 {
 	int		i;
@@ -40,6 +42,8 @@ static char	**convert_list_to_map(t_list *lines)
 	return (map);
 }
 
+// Reads lines from a file descriptor and stores them in a linked list.
+// Trims newlines and returns the list or NULL on failure.
 static t_list	*read_lines(int fd)
 {
 	t_list	*lines;
@@ -65,6 +69,8 @@ static t_list	*read_lines(int fd)
 	return (lines);
 }
 
+// Loads a map from a given file path into a 2D char array.
+// Returns NULL if reading or conversion fails. Exits on file open error.
 char	**read_map(const char *filename)
 {
 	int		fd;
@@ -83,6 +89,7 @@ char	**read_map(const char *filename)
 	return (map);
 }
 
+// Frees a NULL-terminated 2D char array representing the map.
 void	free_map(char **map)
 {
 	int	i;

@@ -6,12 +6,14 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 00:56:33 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/21 23:56:53 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/08/04 00:33:25 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// Checks if the given filename ends with ".ber".
+// Returns 1 if true, 0 otherwise.
 static int	is_ber_file(const char *filename)
 {
 	size_t	len;
@@ -22,6 +24,9 @@ static int	is_ber_file(const char *filename)
 	return (0);
 }
 
+// Initializes the game by loading and validating the map,
+// setting up graphics, and rendering the initial map state.
+// Exits with error if any step fails.
 void	init_game(t_game *game, const char *filename)
 {
 	if (!is_ber_file(filename))

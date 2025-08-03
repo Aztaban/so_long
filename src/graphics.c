@@ -6,12 +6,15 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 21:31:21 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/24 00:34:58 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/08/04 00:36:05 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// Loads directional sprite frames (up, down, left, right) for a given entity.
+// Expects .xpm files in the provided base path. 
+// Exits if any frame fails to load.
 static void	load_sprite(t_game *game, t_sprite *sprite, const char *base)
 {
 	int		w;
@@ -39,6 +42,8 @@ static void	load_sprite(t_game *game, t_sprite *sprite, const char *base)
 		exit_with_error(game, "Failed to load sprites.");
 }
 
+// Loads all game textures: static tiles and animated sprites.
+// Exits if any texture fails to load.
 static void	load_textures(t_game *game)
 {
 	int	width;
@@ -61,6 +66,8 @@ static void	load_textures(t_game *game)
 		exit_with_error(game, "Failed to load textures.");
 }
 
+// Initializes MiniLibX, creates the game window and image buffer,
+// and loads all required textures and sprites. Exits on any failure.
 void	init_graphics(t_game *game)
 {
 	int	scr_w;

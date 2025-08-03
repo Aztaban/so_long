@@ -6,12 +6,14 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:58:01 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/22 02:44:12 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/08/04 00:32:12 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// Entry point of the program. Validates arguments.
+// Initializes the game, sets up hooks, and starts the main loop.
 int	main(int argc, char **argv)
 {
 	t_game	game;

@@ -6,13 +6,16 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 01:17:43 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/24 01:32:20 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/08/04 00:41:48 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdio.h>
 
+// Checks individual characters in a line for validity and counts key elements.
+// Updates player start position, exit, and collectible counters.
+// Returns error code if an invalid character is found.
 static int	validate_and_count(t_game *game, t_count *count, int x)
 {
 	char	c;
@@ -37,6 +40,8 @@ static int	validate_and_count(t_game *game, t_count *count, int x)
 	return (0);
 }
 
+// Validates one line of the map: checks length and valid characters.
+// Also counts key map components (P, E, C).
 static int	validate_line(t_game *game, t_count *count)
 {
 	int		i;
@@ -57,6 +62,8 @@ static int	validate_line(t_game *game, t_count *count)
 	return (0);
 }
 
+// Ensures the map is surrounded by walls (top, bottom, left, right).
+// Returns error if any border is not a wall.
 static int	validate_walls(t_map *map)
 {
 	int	i;
@@ -78,6 +85,8 @@ static int	validate_walls(t_map *map)
 	return (0);
 }
 
+// Validates overall map format: size, required characters, and wall boundaries.
+// Sets map height and collectible count. Returns appropriate error code.
 static int	validate_format(t_game *game)
 {
 	int		error;
@@ -105,6 +114,8 @@ static int	validate_format(t_game *game)
 	return (validate_walls(&game->map));
 }
 
+// Orchestrates full map validation: format, content, walls, and path.
+// Exits with error message if any check fails.
 void	validate_map(t_game *game)
 {
 	int	err;
