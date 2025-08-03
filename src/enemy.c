@@ -6,7 +6,7 @@
 /*   By: mjusta <mjusta@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 01:39:36 by mjusta            #+#    #+#             */
-/*   Updated: 2025/07/24 03:25:34 by mjusta           ###   ########.fr       */
+/*   Updated: 2025/08/03 23:45:45 by mjusta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	move_enemy(t_game *game, int x, int y)
 		ft_printf("Orcs got you after %i steps.\n", ++game->player.moves_count);
 		exit_game(game);
 	}
-	if (tile == WALL || tile == COLLECTIBLE || tile == ENEMY)
+	if (tile == WALL || tile == COLLECTIBLE || tile == ENEMY || tile == EXIT)
 		return ;
 	game->map.grid[y][x] = FLOOR;
 	game->map.grid[new_y][new_x] = FLOOD;
